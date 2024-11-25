@@ -6,7 +6,7 @@ public class TestaConexao {
 
     public static void main(String[] args) {
         // Cria o EntityManagerFactory utilizando a unidade de persistência definida no persistence.xml
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ola");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("agenda");
 
         // Cria o EntityManager
         EntityManager em = emf.createEntityManager();
