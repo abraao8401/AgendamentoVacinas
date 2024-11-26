@@ -5,13 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f9b712f-1777-441e-9524-1fece293ce89" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/agenda/model/Agenda.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/agenda/model/Alergia.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/agenda/model/Usuario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/agenda/model/Vacina.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/agenda/enums/Periodicidade.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/agenda/enums/Sexo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/agenda/enums/SituacaoAgenda.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/TestaConexao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TestaConexao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/agenda/model/Agenda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/agenda/model/Agenda.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/agenda/model/Alergia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/agenda/model/Alergia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/agenda/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/agenda/model/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/agenda/model/Vacina.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/agenda/model/Vacina.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +24,7 @@
       <list>
         <option value="package-info" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
