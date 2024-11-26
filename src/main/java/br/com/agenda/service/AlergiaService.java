@@ -1,101 +1,101 @@
 package br.com.agenda.service;
 
-import br.com.agenda.model.Usuario;
+import br.com.agenda.model.Alergia;
 import br.com.agenda.util.JPAUtil;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import java.util.List;
 
-public class UsuarioService {
+public class AlergiaService {
 
     /**
-     * Método para salvar um novo usuário.
+     * Método para criar ou salvar uma nova Alergia.
      */
-    public void salvarUsuario(Usuario usuario) {
+    public void salvarAlergia(Alergia alergia) {
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction transaction = em.getTransaction();
 
         try {
             transaction.begin();
-            em.persist(usuario);
+            em.persist(alergia);
             transaction.commit();
         } catch (Exception e) {
             if (transaction.isActive()) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Erro ao salvar usuário: " + e.getMessage(), e);
+            throw new RuntimeException("Erro ao salvar alergia: " + e.getMessage(), e);
         } finally {
             em.close();
         }
     }
 
     /**
-     * Método para buscar um usuário pelo ID.
+     * Método para buscar uma Alergia pelo ID.
      */
-    public Usuario buscarUsuarioPorId(Integer id) {
+    public Alergia buscarAlergiaPorId(Long id) {
         EntityManager em = JPAUtil.getEntityManager();
 
         try {
-            return em.find(Usuario.class, id);
+            return em.find(Alergia.class, id);
         } finally {
             em.close();
         }
     }
 
     /**
-     * Método para listar todos os usuários.
+     * Método para listar todas as Alergias.
      */
-    public List<Usuario> listarUsuarios() {
+    public List<Alergia> listarAlergias() {
         EntityManager em = JPAUtil.getEntityManager();
 
         try {
-            return em.createQuery("SELECT u FROM Usuario u", Usuario.class).getResultList();
+            return em.createQuery("SELECT a FROM Alergia a", Alergia.class).getResultList();
         } finally {
             em.close();
         }
     }
 
     /**
-     * Método para atualizar um usuário existente.
+     * Método para atualizar uma Alergia existente.
      */
-    public void atualizarUsuario(Usuario usuario) {
+    public void atualizarAlergia(Alergia alergia) {
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction transaction = em.getTransaction();
 
         try {
             transaction.begin();
-            em.merge(usuario);
+            em.merge(alergia);
             transaction.commit();
         } catch (Exception e) {
             if (transaction.isActive()) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Erro ao atualizar usuário: " + e.getMessage(), e);
+            throw new RuntimeException("Erro ao atualizar alergia: " + e.getMessage(), e);
         } finally {
             em.close();
         }
     }
 
     /**
-     * Método para excluir um usuário pelo ID.
+     * Método para excluir uma Alergia pelo ID.
      */
-    public void excluirUsuario(Integer id) {
+    public void excluirAlergia(Long id) {
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction transaction = em.getTransaction();
 
         try {
             transaction.begin();
-            Usuario usuario = em.find(Usuario.class, id);
-            if (usuario != null) {
-                em.remove(usuario);
+            Alergia alergia = em.find(Alergia.class, id);
+            if (alergia != null) {
+                em.remove(alergia);
             }
             transaction.commit();
         } catch (Exception e) {
             if (transaction.isActive()) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Erro ao excluir usuário: " + e.getMessage(), e);
+            throw new RuntimeException("Erro ao excluir alergia: " + e.getMessage(), e);
         } finally {
             em.close();
         }

@@ -1,101 +1,101 @@
 package br.com.agenda.service;
 
-import br.com.agenda.model.Usuario;
+import br.com.agenda.model.Vacina;
 import br.com.agenda.util.JPAUtil;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import java.util.List;
 
-public class UsuarioService {
+public class VacinaService {
 
     /**
-     * Método para salvar um novo usuário.
+     * Salvar uma nova vacina.
      */
-    public void salvarUsuario(Usuario usuario) {
+    public void salvarVacina(Vacina vacina) {
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction transaction = em.getTransaction();
 
         try {
             transaction.begin();
-            em.persist(usuario);
+            em.persist(vacina);
             transaction.commit();
         } catch (Exception e) {
             if (transaction.isActive()) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Erro ao salvar usuário: " + e.getMessage(), e);
+            throw new RuntimeException("Erro ao salvar vacina: " + e.getMessage(), e);
         } finally {
             em.close();
         }
     }
 
     /**
-     * Método para buscar um usuário pelo ID.
+     * Buscar vacina pelo ID.
      */
-    public Usuario buscarUsuarioPorId(Integer id) {
+    public Vacina buscarVacinaPorId(Integer id) {
         EntityManager em = JPAUtil.getEntityManager();
 
         try {
-            return em.find(Usuario.class, id);
+            return em.find(Vacina.class, id);
         } finally {
             em.close();
         }
     }
 
     /**
-     * Método para listar todos os usuários.
+     * Listar todas as vacinas.
      */
-    public List<Usuario> listarUsuarios() {
+    public List<Vacina> listarVacinas() {
         EntityManager em = JPAUtil.getEntityManager();
 
         try {
-            return em.createQuery("SELECT u FROM Usuario u", Usuario.class).getResultList();
+            return em.createQuery("SELECT v FROM Vacina v", Vacina.class).getResultList();
         } finally {
             em.close();
         }
     }
 
     /**
-     * Método para atualizar um usuário existente.
+     * Atualizar os dados de uma vacina.
      */
-    public void atualizarUsuario(Usuario usuario) {
+    public void atualizarVacina(Vacina vacina) {
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction transaction = em.getTransaction();
 
         try {
             transaction.begin();
-            em.merge(usuario);
+            em.merge(vacina);
             transaction.commit();
         } catch (Exception e) {
             if (transaction.isActive()) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Erro ao atualizar usuário: " + e.getMessage(), e);
+            throw new RuntimeException("Erro ao atualizar vacina: " + e.getMessage(), e);
         } finally {
             em.close();
         }
     }
 
     /**
-     * Método para excluir um usuário pelo ID.
+     * Excluir vacina pelo ID.
      */
-    public void excluirUsuario(Integer id) {
+    public void excluirVacina(Integer id) {
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction transaction = em.getTransaction();
 
         try {
             transaction.begin();
-            Usuario usuario = em.find(Usuario.class, id);
-            if (usuario != null) {
-                em.remove(usuario);
+            Vacina vacina = em.find(Vacina.class, id);
+            if (vacina != null) {
+                em.remove(vacina);
             }
             transaction.commit();
         } catch (Exception e) {
             if (transaction.isActive()) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Erro ao excluir usuário: " + e.getMessage(), e);
+            throw new RuntimeException("Erro ao excluir vacina: " + e.getMessage(), e);
         } finally {
             em.close();
         }
