@@ -1,5 +1,6 @@
 package br.com.agenda.service;
 
+import br.com.agenda.model.Alergia;
 import br.com.agenda.model.Usuario;
 import br.com.agenda.util.JPAUtil;
 
@@ -18,6 +19,19 @@ public class UsuarioService {
 
         try {
             transaction.begin();
+
+            // Se o usuário já tem alergias associadas, vamos persistir a relação na tabela intermediária
+            if (usuario.getAlergias() != null && !usuario.getAlergias().isEmpty()) {
+                for (Alergia alergia : usuario.getAlergias()) {
+                    if (alergia.getId() == null) {
+                        em.persist(alergia); // Persistir alergias que ainda não existem no banco
+                    } else {
+                        em.merge(alergia); // Atualizar alergias existentes
+                    }
+                }
+            }
+
+            // Persistir o usuário
             em.persist(usuario);
             transaction.commit();
         } catch (Exception e) {
@@ -65,6 +79,19 @@ public class UsuarioService {
 
         try {
             transaction.begin();
+
+            // Verificar e atualizar as alergias do usuário
+            if (usuario.getAlergias() != null) {
+                for (Alergia alergia : usuario.getAlergias()) {
+                    if (alergia.getId() == null) {
+                        em.persist(alergia); // Persistir alergias novas
+                    } else {
+                        em.merge(alergia); // Atualizar alergias existentes
+                    }
+                }
+            }
+
+            // Atualizar o usuário
             em.merge(usuario);
             transaction.commit();
         } catch (Exception e) {
@@ -88,6 +115,12 @@ public class UsuarioService {
             transaction.begin();
             Usuario usuario = em.find(Usuario.class, id);
             if (usuario != null) {
+                // Desassociar alergias, mas não removê-las, caso estejam associadas a outros usuários
+                if (usuario.getAlergias() != null) {
+                    usuario.getAlergias().clear();
+                }
+
+                // Remover o usuário
                 em.remove(usuario);
             }
             transaction.commit();

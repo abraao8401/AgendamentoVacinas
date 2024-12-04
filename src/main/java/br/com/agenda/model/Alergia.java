@@ -1,12 +1,16 @@
 package br.com.agenda.model;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
+@Table(name = "alergias")
 public class Alergia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(length = 40, nullable = false)
     private String nome;
@@ -14,12 +18,18 @@ public class Alergia {
     public Alergia() {
 
     }
+    public Alergia(Integer id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+    @ManyToMany(mappedBy = "alergias")
+    private List<Usuario> usuarios = new ArrayList<>();
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
