@@ -22,9 +22,6 @@ public class Alergia {
         this.id = id;
         this.nome = nome;
     }
-    @ManyToMany(mappedBy = "alergias")
-    private List<Usuario> usuarios = new ArrayList<>();
-
     public Integer getId() {
         return id;
     }

@@ -5,21 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f9b712f-1777-441e-9524-1fece293ce89" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/vacina-listar.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/agenda/servlet/AgendaServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/agenda/servlet/AlergiaServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/agenda/servlet/UsuarioServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/agenda/servlet/VacinaServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/cadastrarAgenda.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/cadastrarAlergia.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/cadastrarUsuario.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/cadastrarVacina.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/listarAgendas.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/listarAgendasDoDia.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/listarAgendasPorSituacao.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/listarAgendasPorUsuario.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/listarAlergias.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/listarUsuarios.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/listarVacinas.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/agenda/dao/AgendaDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/agenda/dao/AlergiaDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/agenda/dao/GenericDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/agenda/dao/UsuarioDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/agenda/dao/VacinaDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/agenda/enums/SituacaoAgenda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/agenda/enums/SituacaoAgenda.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/agenda/model/Alergia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/agenda/model/Alergia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/agenda/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/agenda/model/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/agenda/service/AgendaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/agenda/service/AgendaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/agenda/service/AlergiaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/agenda/service/AlergiaService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/agenda/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/agenda/service/UsuarioService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/vacina-listar.jsp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,8 +81,10 @@
     &quot;JUnit.VacinaServiceTest.executor&quot;: &quot;Debug&quot;,
     &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
     &quot;Maven.AgendamentoVacinas2.0 [jetty:run].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.AgendamentoVacinas2.0 [org.apache.tomcat.maven:tomcat7-maven-plugin:2.2:run].executor&quot;: &quot;Run&quot;,
     &quot;Maven.AgendamentoVacinas2.0 [org.eclipse.jetty:jetty-maven-plugin:11.0.0-alpha0:run-war].executor&quot;: &quot;Run&quot;,
     &quot;Maven.AgendamentoVacinas2.0 [org.eclipse.jetty:jetty-maven-plugin:11.0.0-alpha0:run].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.AgendamentoVacinas2.0 [org.eclipse.jetty:jetty-maven-plugin:11.0.0-alpha0:stop].executor&quot;: &quot;Run&quot;,
     &quot;Maven.AgendamentoVacinas2.0 [org.eclipse.jetty:jetty-maven-plugin:9.4.5.v20170502:run].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
@@ -106,7 +119,7 @@
       <recent name="br.com.agenda.servlets" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Maven.AgendamentoVacinas2.0 [jetty:run]">
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="AgendamentoVacinas2.0" />
@@ -181,9 +194,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Maven.AgendamentoVacinas2.0 [jetty:run]" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main (1)" />
-        <item itemvalue="Maven.AgendamentoVacinas2.0 [jetty:run]" />
         <item itemvalue="JUnit.VacinaServiceTest" />
         <item itemvalue="Application.TestaConexao" />
       </list>

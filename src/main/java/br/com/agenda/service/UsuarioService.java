@@ -1,5 +1,6 @@
 package br.com.agenda.service;
 
+import br.com.agenda.model.Agenda;
 import br.com.agenda.model.Alergia;
 import br.com.agenda.model.Usuario;
 import br.com.agenda.util.JPAUtil;
@@ -113,8 +114,22 @@ public class UsuarioService {
 
         try {
             transaction.begin();
+
+            // Buscar o usuário
             Usuario usuario = em.find(Usuario.class, id);
             if (usuario != null) {
+                // Verificar se o usuário possui agendamentos relacionados
+                List<Agenda> agendas = em.createQuery("SELECT a FROM Agenda a WHERE a.usuario.id = :usuarioId", Agenda.class)
+                        .setParameter("usuarioId", usuario.getId())
+                        .getResultList();
+
+                if (!agendas.isEmpty()) {
+                    // Excluir todas as agendas do usuário
+                    for (Agenda agenda : agendas) {
+                        em.remove(agenda); // Excluir agenda
+                    }
+                }
+
                 // Desassociar alergias, mas não removê-las, caso estejam associadas a outros usuários
                 if (usuario.getAlergias() != null) {
                     usuario.getAlergias().clear();
@@ -123,6 +138,7 @@ public class UsuarioService {
                 // Remover o usuário
                 em.remove(usuario);
             }
+
             transaction.commit();
         } catch (Exception e) {
             if (transaction.isActive()) {
@@ -133,4 +149,6 @@ public class UsuarioService {
             em.close();
         }
     }
+
+
 }

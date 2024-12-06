@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Vacina</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        .container h1 {
+            text-align: center;
+            color: #333333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555555;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .form-group button {
+            padding: 10px 15px;
+            background-color: #4caf50;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .form-group button:hover {
+            background-color: #45a049;
+        }
+        .form-group .btn-secondary {
+            background-color: #2196f3;
+            margin-left: 5px;
+        }
+        .form-group .btn-secondary:hover {
+            background-color: #1976d2;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Cadastro de Vacina</h1>
+    <form method="post" action="vacina">
+        <div class="form-group">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" required>
+        </div>
+        <div class="form-group">
+            <label for="descricao">Descrição:</label>
+            <input type="text" id="descricao" name="descricao">
+        </div>
+        <div class="form-group">
+            <label for="doses">Doses:</label>
+            <input type="number" id="doses" name="doses" min="1" required>
+        </div>
+        <div class="form-group">
+            <label for="periodicidade">Periodicidade:</label>
+            <select id="periodicidade" name="periodicidade" required>
+                <option value="1">Dia</option>
+                <option value="2">Semanas</option>
+                <option value="3">Meses</option>
+                <option value="4">Anos</option>
+            </select>
+        </div>
+        <div class="form-group" id="intervalo-group" style="display: none;">
+            <label for="intervalo">Intervalo entre as doses:</label>
+            <input type="number" id="intervalo" name="intervalo" min="1">
+        </div>
+        <div class="form-group">
+            <button type="submit">Salvar</button>
+            <button type="reset" class="btn-secondary">Limpar</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    document.getElementById("doses").addEventListener("input", function() {
+        const doses = parseInt(this.value);
+        const intervaloGroup = document.getElementById("intervalo-group");
+        if (doses > 1) {
+            intervaloGroup.style.display = "block";
+        } else {
+            intervaloGroup.style.display = "none";
+        }
+    });
+</script>
+</body>
+</html>

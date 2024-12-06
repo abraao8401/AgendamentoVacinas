@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        .container h1 {
+            text-align: center;
+            color: #333333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555555;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group input[type="date"],
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .form-group input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        .form-group .alergia-field {
+            margin-bottom: 10px;
+        }
+        .form-group button {
+            padding: 10px 15px;
+            background-color: #4caf50;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .form-group button:hover {
+            background-color: #45a049;
+        }
+        .form-group .btn-secondary {
+            background-color: #2196f3;
+            margin-left: 5px;
+        }
+        .form-group .btn-secondary:hover {
+            background-color: #1976d2;
+        }
+        .alergias-container {
+            padding: 10px;
+            border: 1px dashed #cccccc;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function toggleAlergias() {
+            const possuiAlergia = document.getElementById("possuiAlergia").checked;
+            const alergiasSection = document.getElementById("alergiasSection");
+            alergiasSection.style.display = possuiAlergia ? "block" : "none";
+        }
+
+        function generateAlergiasFields() {
+            const quantidade = document.getElementById("quantasAlergias").value;
+            const alergiasContainer = document.getElementById("alergiasContainer");
+            alergiasContainer.innerHTML = ""; // Limpa os campos anteriores
+
+            for (let i = 1; i <= quantidade; i++) {
+                const field = document.createElement("div");
+                field.className = "alergia-field";
+                field.innerHTML = `<label for="alergia${i}">Alergia ${i}:</label>
+                                   <input type="text" id="alergia${i}" name="alergia${i}" placeholder="Digite a alergia ${i}">`;
+                alergiasContainer.appendChild(field);
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <h1>Cadastro de Usuário</h1>
+    <form method="post" action="usuario">
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+        </div>
+        <div class="form-group">
+            <label for="dataNascimento">Data de Nascimento:</label>
+            <input type="date" id="dataNascimento" name="dataNascimento" required>
+        </div>
+        <div class="form-group">
+            <label>Sexo:</label>
+            <label><input type="radio" name="sexo" value="M" required> Masculino</label>
+            <label><input type="radio" name="sexo" value="F" required> Feminino</label>
+        </div>
+        <div class="form-group">
+            <label for="logradouro">Logradouro:</label>
+            <input type="text" id="logradouro" name="logradouro" required>
+        </div>
+        <div class="form-group">
+            <label for="numero">Número:</label>
+            <input type="number" id="numero" name="numero" required>
+        </div>
+        <div class="form-group">
+            <label for="setor">Setor:</label>
+            <input type="text" id="setor" name="setor" required>
+        </div>
+        <div class="form-group">
+            <label for="cidade">Cidade:</label>
+            <input type="text" id="cidade" name="cidade" required>
+        </div>
+        <div class="form-group">
+            <label for="uf">Estado (UF):</label>
+            <select id="uf" name="uf" required>
+                <option value="AC">AC</option>
+                <option value="AL">AL</option>
+                <option value="AM">AM</option>
+                <option value="AP">AP</option>
+                <option value="BA">BA</option>
+                <option value="CE">CE</option>
+                <option value="DF">DF</option>
+                <option value="ES">ES</option>
+                <option value="GO">GO</option>
+                <option value="MA">MA</option>
+                <option value="MT">MT</option>
+                <option value="MS">MS</option>
+                <option value="MG">MG</option>
+                <option value="PA">PA</option>
+                <option value="PB">PB</option>
+                <option value="PR">PR</option>
+                <option value="PE">PE</option>
+                <option value="PI">PI</option>
+                <option value="RJ">RJ</option>
+                <option value="RN">RN</option>
+                <option value="RS">RS</option>
+                <option value="RO">RO</option>
+                <option value="RR">RR</option>
+                <option value="SC">SC</option>
+                <option value="SP">SP</option>
+                <option value="SE">SE</option>
+                <option value="TO">TO</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label><input type="checkbox" id="possuiAlergia" onchange="toggleAlergias()"> Possui alergia?</label>
+        </div>
+        <div id="alergiasSection" style="display: none;">
+            <div class="form-group">
+                <label for="quantasAlergias">Quantas?</label>
+                <input type="number" id="quantasAlergias" name="quantasAlergias" min="1" max="10" onchange="generateAlergiasFields()">
+            </div>
+            <div id="alergiasContainer" class="alergias-container"></div>
+        </div>
+        <div class="form-group">
+            <button type="submit">Salvar</button>
+            <button type="reset" class="btn-secondary">Limpar</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

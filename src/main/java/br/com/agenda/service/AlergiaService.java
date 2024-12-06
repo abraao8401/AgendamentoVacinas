@@ -100,4 +100,21 @@ public class AlergiaService {
             em.close();
         }
     }
+
+    public Alergia buscarAlergiaPorNome(String nome) {
+        // Obtém o EntityManager
+        EntityManager em = JPAUtil.getEntityManager();
+
+        try {
+            // Cria a consulta para buscar a alergia pelo nome
+            return em.createQuery("SELECT a FROM Alergia a WHERE a.nome = :nome", Alergia.class)
+                    .setParameter("nome", nome)  // Passa o parâmetro nome para a consulta
+                    .getResultStream()           // Obtém o resultado como um stream
+                    .findFirst()                 // Pega o primeiro resultado ou null
+                    .orElse(null);               // Retorna null caso não encontre
+        } finally {
+            em.close();  // Fecha o EntityManager após a execução
+        }
+    }
+
 }

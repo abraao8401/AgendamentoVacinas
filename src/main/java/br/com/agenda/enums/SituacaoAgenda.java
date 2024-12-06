@@ -1,9 +1,9 @@
 package br.com.agenda.enums;
 
 public enum SituacaoAgenda {
-    AGENDADO("Agendado"),
-    CANCELADO("Cancelado"),
-    REALIZADO("Realizado");
+    AGENDADA("Agendada"),
+    CANCELADA("Cancelada"),
+    REALIZADA("Realizada");
 
     private final String descricao;
 

@@ -121,4 +121,22 @@ public class AgendaService {
             em.close();
         }
     }
+
+    // Método para listar as agendas de um usuário específico
+    public List<Agenda> listarAgendasPorUsuario(Integer idUsuario) {
+        EntityManager em = JPAUtil.getEntityManager();
+
+        try {
+            return em.createQuery(
+                            "SELECT a FROM Agenda a WHERE a.usuario.id = :idUsuario ORDER BY " +
+                                    "CASE WHEN a.situacao = 'AGENDADA' THEN 1 " +
+                                    "WHEN a.situacao = 'REALIZADA' THEN 2 " +
+                                    "WHEN a.situacao = 'CANCELADA' THEN 3 END",
+                            Agenda.class)
+                    .setParameter("idUsuario", idUsuario)
+                    .getResultList();
+        } finally {
+            em.close();
+        }
+    }
 }
